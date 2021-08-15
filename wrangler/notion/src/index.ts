@@ -1,7 +1,11 @@
+import headerCss from "./components/header.css";
+import headerHtml from "./components/header.html";
+import customScript from "./customScript";
+
 /* CONFIGURATION STARTS HERE */
 
 /* Step 1: enter your domain name like fruitionsite.com */
-const MY_DOMAIN = "";
+const MY_DOMAIN = "notion.smatt.workers.dev";
 
 /*
  * Step 2: enter your URL slug to page ID mapping
@@ -20,7 +24,15 @@ const PAGE_DESCRIPTION = "";
 const GOOGLE_FONT: string = "";
 
 /* Step 5: enter any custom scripts you'd like */
-const CUSTOM_SCRIPT = ``;
+const CUSTOM_SCRIPT = `
+<style>
+${headerCss}
+</style>
+${headerHtml}
+<script>
+(${customScript})();
+</script>
+`;
 
 /* CONFIGURATION ENDS HERE */
 

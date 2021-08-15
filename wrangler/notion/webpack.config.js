@@ -21,6 +21,14 @@ module.exports = {
           // transpileOnly: true,
         },
       },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+      {
+        test: /\.css$/i,
+        use: ["css-loader"],
+      },
     ],
   },
 }

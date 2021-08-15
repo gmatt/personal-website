@@ -12,6 +12,7 @@ wrangler login
 https://github.com/stephenou/fruitionsite
 
 ```bash
+git submodule update --remote --merge
 yarn fruition-generate
 yarn fruition-patch
 ```
