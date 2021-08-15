@@ -1,0 +1,3 @@
+[submodule "wrangler/notion/fruitionsite"]
+	path = wrangler/notion/fruitionsite
+	url = ../../stephenou/fruitionsite.git
