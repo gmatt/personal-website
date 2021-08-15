@@ -1,7 +1,11 @@
 name = "notion"
 type = "javascript"
-
-account_id = "1ce6900d3edc12b4d953942ca4d5078f"
-workers_dev = true
-route = ""
 zone_id = ""
+account_id = "1ce6900d3edc12b4d953942ca4d5078f"
+route = ""
+workers_dev = true
+
+[build]
+command = "yarn install && yarn run build"
+[build.upload]
+format = "service-worker"
