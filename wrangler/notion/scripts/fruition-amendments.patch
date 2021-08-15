@@ -1,0 +1,100 @@
+diff --git a/wrangler/notion/src/index.ts b/wrangler/notion/src/index.ts
+index 4d945bb..21dae9f 100644
+--- a/wrangler/notion/src/index.ts
++++ b/wrangler/notion/src/index.ts
+@@ -8,7 +8,7 @@ const MY_DOMAIN = "";
+  * The key on the left is the slug (without the slash)
+  * The value on the right is the Notion page ID
+  */
+-const SLUG_TO_PAGE = {
++const SLUG_TO_PAGE: { [key: string]: string } = {
+     "": "",
+ };
+ 
+@@ -17,15 +17,15 @@ const PAGE_TITLE = "";
+ const PAGE_DESCRIPTION = "";
+ 
+ /* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
+-const GOOGLE_FONT = "";
++const GOOGLE_FONT: string = "";
+ 
+ /* Step 5: enter any custom scripts you'd like */
+ const CUSTOM_SCRIPT = ``;
+ 
+ /* CONFIGURATION ENDS HERE */
+ 
+-const PAGE_TO_SLUG = {};
+-const slugs = [];
++const PAGE_TO_SLUG: { [key: string]: string } = {};
++const slugs: string[] = [];
+ const pages = [];
+ Object.keys(SLUG_TO_PAGE).forEach((slug) => {
+     const page = SLUG_TO_PAGE[slug];
+@@ -51,7 +51,7 @@ const corsHeaders = {
+     "Access-Control-Allow-Headers": "Content-Type",
+ };
+ 
+-function handleOptions(request) {
++function handleOptions(request: Request) {
+     if (
+         request.headers.get("Origin") !== null &&
+         request.headers.get("Access-Control-Request-Method") !== null &&
+@@ -71,7 +71,7 @@ function handleOptions(request) {
+     }
+ }
+ 
+-async function fetchAndApply(request) {
++async function fetchAndApply(request: Request) {
+     if (request.method === "OPTIONS") {
+         return handleOptions(request);
+     }
+@@ -106,6 +106,7 @@ async function fetchAndApply(request) {
+         response = new Response(response.body, response);
+         response.headers.set("Access-Control-Allow-Origin", "*");
+         if (url.pathname.startsWith("/api/v3/getPublicPageData")) {
++            // @ts-ignore
+             response.body.delete("requireInterstitial");
+         }
+         return response;
+@@ -127,7 +128,7 @@ async function fetchAndApply(request) {
+ }
+ 
+ class MetaRewriter {
+-    element(element) {
++    element(element: Element) {
+         if (PAGE_TITLE !== "") {
+             if (element.getAttribute("property") === "og:title" || element.getAttribute("name") === "twitter:title") {
+                 element.setAttribute("content", PAGE_TITLE);
+@@ -155,7 +156,7 @@ class MetaRewriter {
+ }
+ 
+ class HeadRewriter {
+-    element(element) {
++    element(element: Element) {
+         if (GOOGLE_FONT !== "") {
+             element.append(
+                 `<link href="https://fonts.googleapis.com/css?family=${GOOGLE_FONT.replace(
+@@ -187,10 +188,12 @@ class HeadRewriter {
+ }
+ 
+ class BodyRewriter {
+-    constructor(SLUG_TO_PAGE) {
++    SLUG_TO_PAGE: { [key: string]: string };
++
++    constructor(SLUG_TO_PAGE: { [key: string]: string }) {
+         this.SLUG_TO_PAGE = SLUG_TO_PAGE;
+     }
+-    element(element) {
++    element(element: Element) {
+         element.append(
+             `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>
+       <script>
+@@ -296,7 +299,7 @@ class BodyRewriter {
+     }
+ }
+ 
+-async function appendJavascript(res, SLUG_TO_PAGE) {
++async function appendJavascript(res: Response, SLUG_TO_PAGE: { [key: string]: string }) {
+     return new HTMLRewriter()
+         .on("title", new MetaRewriter())
+         .on("meta", new MetaRewriter())

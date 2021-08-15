@@ -7,7 +7,8 @@
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
-    "fruition-generate": "ts-node scripts/fruition-generate && prettier --write src/index.ts"
+    "fruition-generate": "ts-node scripts/fruition-generate && prettier --write src/index.ts",
+    "fruition-patch": "git apply scripts/fruition-amendments.patch"
   },
   "author": "author",
   "license": "MIT OR Apache-2.0",
