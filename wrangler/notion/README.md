@@ -20,7 +20,11 @@ yarn fruition-patch
 Update patch file:
 
 ```bash
-git diff 1a36c503 src/index.ts > scripts/fruition-amendments.patch
+# fruition-generate
+# stash src/index.ts in SmartGit
+# fruition-patch
+# resolve conflicts
+git diff stash@{0} src/index.ts > scripts/fruition-amendments.patch
 ```
 
 Development
