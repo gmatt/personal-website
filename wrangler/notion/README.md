@@ -29,10 +29,12 @@ git diff stash@{0} src/index.ts > scripts/fruition-amendments.patch
 
 Development
 
+Warning, the current local setup will use links from the staging url, and will only work after having deployed to staging.
+
 ```bash
-wrangler dev
+wrangler dev --env dev
 ```
 
 ```bash
-wrangler publish
+wrangler publish --env staging
 ```

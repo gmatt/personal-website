@@ -1,4 +1,3 @@
-name = "notion"
 type = "javascript"
 zone_id = ""
 account_id = "1ce6900d3edc12b4d953942ca4d5078f"
@@ -9,3 +8,11 @@ workers_dev = true
 command = "yarn install && yarn run build"
 [build.upload]
 format = "service-worker"
+
+[env.dev]
+vars = { ENVIRONMENT = "dev" }
+name = "notion-dev"
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+name = "notion"
