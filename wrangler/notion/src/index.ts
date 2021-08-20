@@ -32,14 +32,6 @@ ${headerHtml}
 <script>
 (${customScript})();
 </script>
-${
-    // Local fixup.
-    ENVIRONMENT === "dev"
-        ? `
-<script defer="defer" src="https://notion.smatt.workers.dev/396-a6d8ddb95dcbfea07e7b.js"></script>
-<script defer="defer" src="https://notion.smatt.workers.dev/app-75d96fc0bacf7d9a3193.js"></script>`
-        : ""
-}
 `;
 
 /* CONFIGURATION ENDS HERE */
@@ -211,15 +203,17 @@ class BodyRewriter {
     }
     element(element: Element) {
         element.append(
-            `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>
-      <script>${
-          ENVIRONMENT === "dev"
-              ? `
-    window.CONFIG.domainBaseUrl = 'http://127.0.0.1:8787';
-    window.CONFIG.publicDomainName = 'http://127.0.0.1:8787'`
-              : `
-    window.CONFIG.domainBaseUrl = 'https://${MY_DOMAIN}';`
-      }
+            `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>${
+                ENVIRONMENT === "dev"
+                    ? `
+      <script defer="defer" src="https://notion.smatt.workers.dev/396-a6d8ddb95dcbfea07e7b.js"></script>
+      <script defer="defer" src="https://notion.smatt.workers.dev/app-75d96fc0bacf7d9a3193.js"></script>
+      <script>
+      window.CONFIG.domainBaseUrl = 'http://127.0.0.1:8787';`
+                    : `
+      <script>
+      window.CONFIG.domainBaseUrl = 'https://${MY_DOMAIN}';`
+            }
       const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
       const PAGE_TO_SLUG = {};
       const slugs = [];
