@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "module": "commonjs",
-    "target": "esnext",
+    "target": "ES2019",
     "lib": ["esnext", "webworker", "DOM"],
     "alwaysStrict": true,
     "strict": true,
