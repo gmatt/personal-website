@@ -263,6 +263,7 @@ class BodyRewriter {
         onLight();
       }
       const observer = new MutationObserver(function() {
+        window.customMutationScript();
         if (redirected) return;
         const nav = document.querySelector('.notion-topbar');
         const mobileNav = document.querySelector('.notion-topbar-mobile');
