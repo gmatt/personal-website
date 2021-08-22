@@ -1,39 +1,28 @@
 export default () => {
-    const moveHeader = () => {
-        const notionScroller = document.getElementsByClassName("notion-scroller")[0] as HTMLDivElement;
+    const addHeader = () => {
+        const coverImageSelector = ".notion-scroller > div:first-child img";
+        const headersPlaceSelector = ".notion-scroller > div:first-child > div:first-child > div:first-child";
 
-        if (notionScroller == null) {
-            return;
+        const shouldReplaceCover = (element: HTMLImageElement): boolean => {
+            return element?.src?.includes("solid_blue.png") ?? false;
+        };
+
+        const coverImage = document.querySelector(coverImageSelector) as HTMLImageElement;
+
+        if (coverImage != null && shouldReplaceCover(coverImage)) {
+            const headersPlace = document.querySelector(headersPlaceSelector) as HTMLDivElement;
+
+            if (headersPlace?.classList?.contains("mattsml-header") ?? true) {
+                return;
+            }
+
+            const header = document.querySelector(".mattsml-header")!.cloneNode(true) as HTMLDivElement;
+            header.classList.remove("mattsml-header--hidden");
+            headersPlace.replaceWith(header);
         }
-
-        const coverImage = notionScroller.querySelector(":scope > div:first-child img") as HTMLImageElement;
-
-        if (coverImage == null) {
-            return;
-        }
-
-        if (!coverImage.src.includes("solid_blue.png")) {
-            return;
-        }
-
-        const headersPlace = notionScroller.querySelector(
-            ":scope > div:first-child > div:first-child > div:first-child",
-        );
-
-        if (headersPlace == null) {
-            return;
-        }
-
-        if (headersPlace.classList.contains("mattsml-header")) {
-            return;
-        }
-
-        const header = document.getElementsByClassName("mattsml-header")[0].cloneNode(true) as HTMLDivElement;
-        header.classList.remove("mattsml-header--hidden");
-        headersPlace.replaceWith(header);
     };
 
     (window as any).customMutationScript = () => {
-        moveHeader();
+        addHeader();
     };
 };
