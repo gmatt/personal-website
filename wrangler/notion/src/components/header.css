@@ -1,10 +1,8 @@
 .mattsml-header {
-    border: 2px solid dodgerblue;
+    background-color: dodgerblue;
     width: 100%;
-    min-height: 75px;
-    text-align: center;
+    height: 100%;
 }
-
 .mattsml-header .mattsml-header--hidden {
     display: none;
 }
