@@ -1,5 +1,5 @@
 type = "javascript"
-zone_id = ""
+zone_id = "34bec93244f845c4270cce5ff5e223e5"
 account_id = "1ce6900d3edc12b4d953942ca4d5078f"
 route = ""
 workers_dev = true
@@ -15,4 +15,12 @@ name = "notion-dev"
 
 [env.staging]
 vars = { ENVIRONMENT = "staging" }
+name = "notion-staging"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
 name = "notion"
+workers_dev = false
+routes = [
+  "matts.ml/*",
+]

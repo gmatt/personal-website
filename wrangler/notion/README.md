@@ -37,4 +37,5 @@ wrangler dev --env dev
 
 ```bash
 wrangler publish --env staging
+wrangler publish --env production
 ```

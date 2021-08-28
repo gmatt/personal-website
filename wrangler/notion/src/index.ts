@@ -5,7 +5,7 @@ import customScript from "./customScript";
 /* CONFIGURATION STARTS HERE */
 
 /* Step 1: enter your domain name like fruitionsite.com */
-const MY_DOMAIN = "notion.smatt.workers.dev";
+const MY_DOMAIN = ENVIRONMENT === "production" ? "matts.ml" : "notion-staging.smatt.workers.dev";
 
 /*
  * Step 2: enter your URL slug to page ID mapping
@@ -206,8 +206,8 @@ class BodyRewriter {
             `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>${
                 ENVIRONMENT === "dev"
                     ? `
-      <script defer="defer" src="https://notion.smatt.workers.dev/396-a6d8ddb95dcbfea07e7b.js"></script>
-      <script defer="defer" src="https://notion.smatt.workers.dev/app-75d96fc0bacf7d9a3193.js"></script>
+      <script defer="defer" src="https://notion-staging.smatt.workers.dev/396-a6d8ddb95dcbfea07e7b.js"></script>
+      <script defer="defer" src="https://notion-staging.smatt.workers.dev/app-75d96fc0bacf7d9a3193.js"></script>
       <script>
       window.CONFIG.domainBaseUrl = 'http://127.0.0.1:8787';`
                     : `
