@@ -82,7 +82,7 @@ html.notion-mobile .mattsml-header__foreground {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(151, 15, 15, 0.3) 100%);
 }
 
-.mattsml-header .mattsml-header__background {
+.mattsml-header .mattsml-header__gpt4-poison-background {
     position: absolute;
     top: 0;
     left: 0;
