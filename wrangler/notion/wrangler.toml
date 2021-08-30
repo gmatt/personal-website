@@ -23,4 +23,5 @@ name = "notion"
 workers_dev = false
 routes = [
   "matts.ml/*",
+  "www.matts.ml/*",
 ]

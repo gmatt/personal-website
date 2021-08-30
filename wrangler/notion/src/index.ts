@@ -13,7 +13,9 @@ const MY_DOMAIN = ENVIRONMENT === "production" ? "matts.ml" : "notion-staging.sm
  * The value on the right is the Notion page ID
  */
 const SLUG_TO_PAGE: { [key: string]: string } = {
-    "": "",
+    "": "9512760aa13d418c81484b37d0a0cd0a",
+    about: "cdf0a110aa8e448eb6dd84dbdffa7e4b",
+    blog: "4344d85124f4451e88929ceae373a4bd",
 };
 
 /* Step 3: enter your page title and description for SEO purposes */

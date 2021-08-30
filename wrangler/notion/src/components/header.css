@@ -48,6 +48,7 @@ html.notion-mobile .mattsml-header__foreground {
     text-decoration: underline;
     color: inherit;
     text-transform: none;
+    cursor: pointer !important;
 }
 
 .mattsml-header .mattsml-header__gradient {
@@ -57,10 +58,6 @@ html.notion-mobile .mattsml-header__foreground {
     left: 0;
     right: 0;
     filter: saturate(120%);
-}
-
-.mattsml-header .mattsml-header__gradient > div > div {
-    position: relative;
 }
 
 .mattsml-header .mattsml-header__gradient > div > div {

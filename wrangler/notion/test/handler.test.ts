@@ -1,3 +1,5 @@
+// TODO Delete this file.
+
 import { handleRequest } from "../src/handler";
 import makeServiceWorkerEnv from "service-worker-mock";
 
