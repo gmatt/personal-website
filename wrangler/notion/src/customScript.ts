@@ -1,7 +1,8 @@
 export default () => {
     const addHeader = () => {
         const coverImageSelector = ".notion-scroller > div:first-child img";
-        const headersPlaceSelector = ".notion-scroller > div:first-child > div:first-child > div:first-child";
+        const headersPlaceSelector =
+            ".notion-scroller > div:first-child > div:first-of-type > div:first-child > div:first-child";
 
         const shouldReplaceCover = (element: HTMLImageElement): boolean => {
             return element?.src?.includes("solid_blue.png") ?? false;
