@@ -40,7 +40,7 @@ ${headerHtml}
 
 const PAGE_TO_SLUG: { [key: string]: string } = {};
 const slugs: string[] = [];
-const pages = [];
+const pages: string[] = [];
 Object.keys(SLUG_TO_PAGE).forEach((slug) => {
     const page = SLUG_TO_PAGE[slug];
     slugs.push(slug);
@@ -129,7 +129,18 @@ async function fetchAndApply(request: Request) {
             headers: request.headers,
             method: request.method,
         });
-        response = new Response(response.body, response);
+
+        let { status, statusText } = response;
+        if (pages.includes(url.pathname.slice(-32))) {
+            status = 200;
+            statusText = "OK";
+        }
+
+        response = new Response(response.body, {
+            ...response,
+            status,
+            statusText,
+        });
         response.headers.delete("Content-Security-Policy");
         response.headers.delete("X-Content-Security-Policy");
     }
