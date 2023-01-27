@@ -20,8 +20,8 @@ const SLUG_TO_PAGE: { [key: string]: string } = {
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
-const PAGE_TITLE = "";
-const PAGE_DESCRIPTION = "";
+const PAGE_TITLE: string = "";
+const PAGE_DESCRIPTION: string = "";
 
 /* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
 const GOOGLE_FONT: string = "";
