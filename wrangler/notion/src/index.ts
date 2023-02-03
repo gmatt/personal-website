@@ -26,7 +26,10 @@ const PAGE_DESCRIPTION: string = "Personal website of Matt Sárdi, machine learn
 /* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
 const GOOGLE_FONT: string = "";
 
-/* Step 5: enter any custom scripts you'd like */
+/* Step 5: Google analytics tag */
+const GA_TAG = process.env.GA_TAG;
+
+/* Step 6: enter any custom scripts you'd like */
 const CUSTOM_SCRIPT = `
 <style>
 ${headerCss}
@@ -217,7 +220,15 @@ class BodyRewriter {
     }
     element(element: Element) {
         element.append(
-            `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>${
+            `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_TAG}"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TAG}');
+            </script>${
                 ENVIRONMENT === "dev"
                     ? `
       <script defer="defer" src="https://notion-staging.smatt.workers.dev/396-a6d8ddb95dcbfea07e7b.js"></script>
