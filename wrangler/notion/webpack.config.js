@@ -33,6 +33,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({
+      safe: true,
+    }),
   ],
 }
