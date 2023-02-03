@@ -27,7 +27,7 @@ const PAGE_DESCRIPTION: string = "Personal website of Matt Sárdi, machine learn
 const GOOGLE_FONT: string = "";
 
 /* Step 5: Google analytics tag */
-const GA_TAG = "";
+const GA_TAG = process.env.GA_TAG;
 
 /* Step 6: enter any custom scripts you'd like */
 const CUSTOM_SCRIPT = `
